@@ -1,0 +1,14 @@
+services:
+
+  wofost_at:
+    image: ghcr.io/plant-food-research-open/wofost-at:${WOFOST_VERSION:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILD_DATE: date -u +'%Y-%m-%dT%H:%M:%SZ'
+        WOFOST_VERSION: ${WOFOST_VERSION:-latest}
+      tags:
+        - ghcr.io/plant-food-research-open/wofost-at:latest
+    volumes:
+      - ./tests:/workspace/tests

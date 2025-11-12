@@ -165,5 +165,3 @@ cython_debug/
 .python-version
 sbi-logs
 catboost_info
-coverage.json
-md_report.md
