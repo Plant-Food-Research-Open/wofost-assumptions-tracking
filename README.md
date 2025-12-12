@@ -5,12 +5,12 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![Coverage](https://raw.githubusercontent.com/PlantandFoodResearch/wofost-assumptions-tracking/refs/heads/gh-pages/badges/coverage.svg)](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking)
-[![Lint](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/lint.yaml/badge.svg?branch=main)](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/lint.yaml)
-[![Test](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/test.yaml)
-[![Publish](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/publish.yaml/badge.svg?branch=main)](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/publish.yaml)
-[![Build](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/build.yaml)
-[![CodeQL Advanced](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/codeql.yaml/badge.svg?branch=main)](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/actions/workflows/codeql.yaml)
+[![Coverage](https://raw.githubusercontent.com/PlantandFoodResearch/wofost-assumptions-tracking/refs/heads/gh-pages/badges/coverage.svg)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking)
+[![Lint](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/lint.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/lint.yaml)
+[![Test](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/test.yaml)
+[![Publish](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/publish.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/publish.yaml)
+[![Build](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/build.yaml)
+[![CodeQL Advanced](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/codeql.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/codeql.yaml)
 
 *Assumptions tracking for WOFOST Potato using behaviour-driven development and model cards.*
 
