@@ -9,7 +9,7 @@ authors = [
 ]
 license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/PlantandFoodResearch/wofost-assumptions-tracking"
+repository = "https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"

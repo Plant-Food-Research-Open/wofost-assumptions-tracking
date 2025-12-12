@@ -28,15 +28,15 @@ Please refer to the following links:
 - [GitHub Discussions] for questions.
 - [GitHub Issues] for bug reports and feature requests.
 
-[GitHub Discussions]: https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/discussions
-[GitHub issues]: https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/issues
+[GitHub Discussions]: https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/discussions
+[GitHub issues]: https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/issues
 
 # Contributions and Support
 
-Contributions are more than welcome. For general guidelines on how to contribute to this project, take a look at [CONTRIBUTING.md](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/tree/main/CONTRIBUTING.md).
+Contributions are more than welcome. For general guidelines on how to contribute to this project, take a look at [CONTRIBUTING.md](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/tree/main/CONTRIBUTING.md).
 
-For our community code of conduct, please also view [CODE_OF_CONDUCT.md](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/tree/main/CODE_OF_CONDUCT.md).
+For our community code of conduct, please also view [CODE_OF_CONDUCT.md](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/tree/main/CODE_OF_CONDUCT.md).
 
 # License
 
-This work is published under the Apache License (see [LICENSE](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/tree/main/LICENSE)).
+This work is published under the Apache License (see [LICENSE](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/tree/main/LICENSE)).

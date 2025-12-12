@@ -1,6 +1,6 @@
 # Security Policy
 
-If you discover a security vulnerability in this project, we encourage you to let us know right away. [Please report security issues to us by creating a new security advisory.](https://github.com/PlantandFoodResearch/wofost-assumptions-tracking/security/advisories/new)
+If you discover a security vulnerability in this project, we encourage you to let us know right away. [Please report security issues to us by creating a new security advisory.](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/security/advisories/new)
 
 The following information will help us triage your report more quickly:
 
