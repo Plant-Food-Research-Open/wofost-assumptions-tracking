@@ -5,7 +5,7 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![Coverage](https://raw.githubusercontent.com/PlantandFoodResearch/wofost-assumptions-tracking/refs/heads/gh-pages/badges/coverage.svg)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking)
+[![Coverage](https://raw.githubusercontent.com/Plant-Food-Research-Open/wofost-assumptions-tracking/refs/heads/gh-pages/badges/coverage.svg)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking)
 [![Lint](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/lint.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/lint.yaml)
 [![Test](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/test.yaml)
 [![Publish](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/publish.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/publish.yaml)

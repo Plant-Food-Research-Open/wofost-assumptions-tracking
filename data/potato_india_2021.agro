@@ -1,0 +1,13 @@
+Version: 1.0
+AgroManagement:
+- 2021-12-01:
+    CropCalendar:
+        crop_name: 'potato'
+        variety_name: 'Potato_C2_C5'
+        crop_start_date: 2021-12-01
+        crop_start_type: 'sowing'
+        crop_end_date: 2022-02-28
+        crop_end_type: 'maturity'
+        max_duration: 107
+    TimedEvents:
+    StateEvents:
