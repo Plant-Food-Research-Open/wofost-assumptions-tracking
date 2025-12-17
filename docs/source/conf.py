@@ -5,7 +5,7 @@ import wofostat
 
 sys.path.insert(0, os.path.abspath("../.."))
 
-project = "wofostat"
+project = "WOFOST assumptions tracking"
 copyright = "2025, The New Zealand Institute for Plant and Food Research Limited"
 author = "James Bristow"
 release = wofostat.__version__

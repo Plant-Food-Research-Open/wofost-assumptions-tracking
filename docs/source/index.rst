@@ -20,7 +20,10 @@ For our community code of conduct, please also view `CODE_OF_CONDUCT.md. <https:
    :maxdepth: 1
    :caption: Contents:
 
+   api_reference/index.rst
    changelogs/changelog.rst
+   community/index.rst
+   licenses/license.rst
 
 Indices and tables
 ==================
