@@ -13,7 +13,7 @@ repository = "https://github.com/Plant-Food-Research-Open/wofost-assumptions-tra
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
-calisim = "^0.6.2"
+calisim = "^0.6.3"
 pcse = "^6.0.12"
 behave = "^1.3.3"
 
