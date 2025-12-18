@@ -15,15 +15,22 @@ for feature in data:
 	feature_name = feature.get("name", "unknown feature")
 	scenarios = feature.get("elements", [])
 	for scenario in scenarios:
+		if scenario["type"] == "background":
+			continue
+
 		scenario_name = scenario.get("name", "unknown scenario")
 		steps = scenario.get("steps", [])
-		passed = all(step["result"]["status"] == "passed" for step in steps)
+		passed = all(
+			step["result"]["status"] == "passed" for step in steps if "result" in step
+		)
 		status = "✅ Passed" if passed else "❌ Failed"
 		if passed:
 			total_passed += 1
 		total_scenarios += 1
 
-		scenario_time = sum(step["result"].get("duration", 0) for step in steps)
+		scenario_time = sum(
+			step["result"].get("duration", 0) for step in steps if "result" in step
+		)
 		total_time += scenario_time
 
 		lines.append(

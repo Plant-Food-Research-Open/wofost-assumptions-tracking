@@ -108,7 +108,9 @@ def run_sensitivity_analysis(
 	calibration_func: Callable,
 	params: ParameterProvider,
 	n_jobs: int = 1,
-) -> tuple[SensitivityAnalysisMethod, list[pd.DataFrame]]:
+	method: str = "sobol",
+	engine: str = "salib",
+) -> tuple[SensitivityAnalysisMethod, dict[str, dict[str, pd.DataFrame]]]:
 	"""Run a sensitivity analysis.
 
 	Args:
@@ -121,15 +123,17 @@ def run_sensitivity_analysis(
 	    calibration_func (Callable): The calibration function.
 	    params (ParameterProvider): The simulation parameter provider.
 	    n_jobs (int, optional): Number of simulations to run in parallel. Defaults to 1.
+		method (str, optional): The calibration method.
+		engine (str, optional): The underlying calibration library.
 
 	Returns:
-	    tuple[SensitivityAnalysisMethod, list[pd.DataFrame]]: The sensitivity analysis
-	    workflow and sensitivity indices.
+	    tuple[SensitivityAnalysisMethod, dict[str, dict[str, pd.DataFrame]]]]: The
+		sensitivity analysis workflow and sensitivity indices.
 	"""
 	specification = SensitivityAnalysisMethodModel(
 		experiment_name=experiment_name,
 		parameter_spec=parameter_spec,
-		method="sobol",
+		method=method,
 		n_samples=n_samples,
 		n_jobs=n_jobs,
 		output_labels=state_vars,
@@ -147,12 +151,20 @@ def run_sensitivity_analysis(
 	)
 
 	calibrator = SensitivityAnalysisMethod(
-		calibration_func=calibration_func, specification=specification, engine="salib"
+		calibration_func=calibration_func, specification=specification, engine=engine
 	)
 
 	calibrator.specify().execute()
 
-	return calibrator, calibrator.implementation.sp.to_df()
+	sp_df = calibrator.implementation.sp.to_df()
+	sp = {}
+	for i, state_var in enumerate(state_vars):
+		sp[state_var] = {
+			"ST": sp_df[i][0],
+			"S1": sp_df[i][1],
+		}
+
+	return calibrator, sp
 
 
 def objective_func(

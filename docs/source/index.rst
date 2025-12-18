@@ -1,7 +1,9 @@
 WOFOST Assumptions Tracking
 ---------------------------
 
-This repository contains code examples for assumptions tracking of WOFOST Potato using behaviour driven development and model cards.
+This repository contains code examples for assumptions tracking of WOFOST Potato using behaviour driven development. The overall motivation behind this demonstration is to synthesise the behavior-driven development (BDD) testing approach that is more commonly used within agile software development with the calibration of mechanistic simulation models. The aim is to demonstrate how BDD can enable and facilitate communication among different disciplines using a common human-readable language. This is particularly important within highly technical scientific domains where cross-disciplinary communication may be more challenging.
+
+BDD was chosen as it (at least in theory) facilitates collaboration and communication within multidisciplinary projects. Namely, it encourages business analysts and developers to collaborate in specifying the behaviour of software, via the use of user stories. These user stories should be written to a formal document. For this demonstration, these documents are written in the popular Gherkin syntax. Model assumptions can be documented in Gherkin, and would be recorded by business analysts as user stories.
 
 Communication
 -------------

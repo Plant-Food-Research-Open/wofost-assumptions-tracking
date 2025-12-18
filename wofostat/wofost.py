@@ -42,6 +42,69 @@ class WOFOST:
 		self.results: pd.DataFrame | None = None
 
 	@staticmethod
+	def get_sited(WAV: float) -> WOFOST72SiteDataProvider:
+		"""Get WOFOST site data provider.
+
+		Args:
+			WAV (float): Initial available water in total rootable zone.
+
+		Returns:
+			WOFOST72SiteDataProvider: The WOFOST site data provider.
+		"""
+		sited = WOFOST72SiteDataProvider(WAV=WAV)
+		return sited
+
+	@staticmethod
+	def get_soild() -> DummySoilDataProvider:
+		"""Get soil data provider.
+
+		Returns:
+			DummySoilDataProvider: The soil data provider.
+		"""
+		soild = DummySoilDataProvider()
+		return soild
+
+	@staticmethod
+	def get_wdp(latitude: float, longitude: float) -> NASAPowerWeatherDataProvider:
+		"""Get NASA weather data provider.
+
+		Args:
+			latitude (float): The weather data latitude.
+			longitude (float): The weather data longitude.
+
+		Returns:
+			NASAPowerWeatherDataProvider: The NASA weather data provider.
+		"""
+		wdp = NASAPowerWeatherDataProvider(latitude=latitude, longitude=longitude)
+		return wdp
+
+	@staticmethod
+	def get_cropd(fpath: str) -> YAMLCropDataProvider:
+		"""Get the crop data provider.
+
+		Args:
+			fpath (str): The data file path.
+
+		Returns:
+			YAMLCropDataProvider: The crop data provider.
+		"""
+		cropd = YAMLCropDataProvider(fpath=fpath, force_reload=True)
+		return cropd
+
+	@staticmethod
+	def get_agro(fpath: str) -> YAMLAgroManagementReader:
+		"""Get the agronomy management reader.
+
+		Args:
+			fpath (str): The data file path.
+
+		Returns:
+			YAMLAgroManagementReader: The agronomy management reader.
+		"""
+		agro = YAMLAgroManagementReader(fpath)
+		return agro
+
+	@staticmethod
 	def get_params(
 		cropd: YAMLCropDataProvider,
 		sited: WOFOST72SiteDataProvider,

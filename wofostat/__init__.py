@@ -8,6 +8,7 @@ from .calibration import (
 	run_sensitivity_analysis,
 	table_to_dict,
 )
+from .utils import snake_case_string
 
 __version__ = importlib.metadata.version("wofostat")
 
@@ -18,4 +19,5 @@ _all__ = [
 	table_to_dict,
 	objective_func,
 	run_optimisation,
+	snake_case_string,
 ]
