@@ -110,6 +110,7 @@ def run_sensitivity_analysis(
 	n_jobs: int = 1,
 	method: str = "sobol",
 	engine: str = "salib",
+	random_seed: int | None = None,
 ) -> tuple[SensitivityAnalysisMethod, dict[str, dict[str, pd.DataFrame]]]:
 	"""Run a sensitivity analysis.
 
@@ -125,6 +126,7 @@ def run_sensitivity_analysis(
 	    n_jobs (int, optional): Number of simulations to run in parallel. Defaults to 1.
 		method (str, optional): The calibration method.
 		engine (str, optional): The underlying calibration library.
+		random_seed (int, optional): The random seed for replicability.
 
 	Returns:
 	    tuple[SensitivityAnalysisMethod, dict[str, dict[str, pd.DataFrame]]]]: The
@@ -140,6 +142,7 @@ def run_sensitivity_analysis(
 		verbose=True,
 		batched=False,
 		method_kwargs=dict(calc_second_order=False, scramble=True),
+		random_seed=random_seed,
 		analyze_kwargs=dict(
 			calc_second_order=False,
 			num_resamples=200,
@@ -160,8 +163,8 @@ def run_sensitivity_analysis(
 	sp = {}
 	for i, state_var in enumerate(state_vars):
 		sp[state_var] = {
-			"ST": sp_df[i][0],
-			"S1": sp_df[i][1],
+			"ST": sp_df[i][0].sort_values("ST", ascending=False),
+			"S1": sp_df[i][1].sort_values("S1", ascending=False),
 		}
 
 	return calibrator, sp
@@ -226,6 +229,9 @@ def run_optimisation(
 	observed_data: np.ndarray | None,
 	distance_metric: str = "mean squared error",
 	n_jobs: int = 1,
+	method: str = "tpes",
+	engine: str = "optuna",
+	random_seed: int | None = None,
 ) -> tuple[OptimisationMethod, dict[str, dict[Any, Any]], pd.DataFrame, pd.DataFrame]:
 	"""Run an optimisation procedure.
 
@@ -243,6 +249,9 @@ def run_optimisation(
 	    distance_metric (str, optional): The distance metric function
 	    for the discrepancy. Defaults to "mean squared error".
 	    n_jobs (int, optional): Number of simulations to run in parallel. Defaults to 1.
+		method (str, optional): The calibration method.
+		engine (str, optional): The underlying calibration library.
+		random_seed (int, optional): The random seed for replicability.
 
 	Returns:
 	    tuple[OptimisationMethod, dict[str, dict[Any, Any]],
@@ -255,11 +264,12 @@ def run_optimisation(
 		experiment_name=experiment_name,
 		parameter_spec=parameter_spec,
 		observed_data=observed_data,
-		method="tpes",
+		method=method,
 		output_labels=state_vars,
 		directions=directions,
 		n_jobs=n_jobs,
 		n_iterations=n_iterations,
+		random_seed=random_seed,
 		calibration_func_kwargs=dict(
 			wdp=wdp,
 			agro=agro,
@@ -270,7 +280,7 @@ def run_optimisation(
 	)
 
 	calibrator = OptimisationMethod(
-		calibration_func=calibration_func, specification=specification, engine="optuna"
+		calibration_func=calibration_func, specification=specification, engine=engine
 	)
 
 	calibrator.specify().execute()

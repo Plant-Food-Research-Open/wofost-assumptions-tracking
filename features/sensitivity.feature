@@ -1,7 +1,7 @@
 Feature: Sobol sensitivity analysis for WOFOST potato
-    Because parameter uncertainty drives crop development and growth
+    Because parameter uncertainty drives potato crop development and growth
     We want to quantify global sensitivities using Sobol indices
-    So we can identify influential parameters for potato LAI and TWSO
+    So we can identify influential parameters for end-of-season LAI and TWSO
 
     Background:
         Given we are using WOFOST site data with a WAV of "50.0"
@@ -23,17 +23,30 @@ Feature: Sobol sensitivity analysis for WOFOST potato
             | name              | description                                   | value                             |
             | experiment_name   | The name of the current experiment            | WOFOST sensitivity analysis       |
             | n_jobs            | The number of simulations to run in parallel  | 10                                |
+            | random_seed       | The random seed for replicability             | 100                               |
 
     @netherlands @sensitivity
-    Scenario: Sobol sensitivity analysis for LAI and TWSO in Limburg, Netherlands
+    Scenario: Sobol sensitivity analysis for end-of-season LAI and TWSO in Limburg, Netherlands
         Given we are using NASA weather data with a latitude of "51" and a longitude of "5"
         And we are using agronomy management data in the "data/potato_netherlands_2021.agro" file
-        When we execute a sensitivity analysis using the "Sobol" method and the "SALib" library with "4" samples
-        Then behave will test it for us!
+        When we execute a sensitivity analysis using the "Sobol" method and the "SALib" library with "256" samples
+        Then the "1st" highest "first order" sensitivity index for "LAI" should be "SPAN"
+        And the "1st" highest "total order" sensitivity index for "LAI" should be "SPAN"
+        And the "2nd" highest "total order" sensitivity index for "LAI" should be "TSUM1"
+        And the "1st" highest "first order" sensitivity index for "TWSO" should be "SPAN"
+        And the "2nd" highest "first order" sensitivity index for "TWSO" should be "Q10"
+        And the "1st" highest "total order" sensitivity index for "TWSO" should be "SPAN"
+        And the "2nd" highest "total order" sensitivity index for "TWSO" should be "TSUM2"
 
     @india @sensitivity
-    Scenario: Sobol sensitivity analysis for LAI and TWSO in Gujarat, India
+    Scenario: Sobol sensitivity analysis for end-of-season LAI and TWSO in Gujarat, India
         Given we are using NASA weather data with a latitude of "23" and a longitude of "73"
         And we are using agronomy management data in the "data/potato_india_2021.agro" file
-        When we execute a sensitivity analysis using the "Sobol" method and the "SALib" library with "4" samples
-        Then behave will test it for us!
+        When we execute a sensitivity analysis using the "Sobol" method and the "SALib" library with "256" samples
+        Then the "1st" highest "first order" sensitivity index for "LAI" should be "SPAN"
+        And the "1st" highest "total order" sensitivity index for "LAI" should be "SPAN"
+        And the "2nd" highest "total order" sensitivity index for "LAI" should be "TSUM1"
+        And the "1st" highest "first order" sensitivity index for "TWSO" should be "TSUM1"
+        And the "2nd" highest "first order" sensitivity index for "TWSO" should be "TSUM2"
+        And the "1st" highest "total order" sensitivity index for "TWSO" should be "TSUM1"
+        And the "2nd" highest "total order" sensitivity index for "TWSO" should be "TSUM2"
