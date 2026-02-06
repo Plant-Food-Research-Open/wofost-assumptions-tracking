@@ -48,7 +48,7 @@ ruff = "^0.7.0"
 jupyterlab = "^4.3.1"
 codespell = "^2.4.1"
 tomli = "^2.2.1"
-pytest-md-report = "^0.6.3"
+pytest-md-report = "^0.7.0"
 notebook = "^7.4.7"
 jupyterhub = "^5.4.0"
 
