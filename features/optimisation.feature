@@ -1,7 +1,7 @@
 Feature: Calibration of WOFOST potato using black-box optimisation
     Because potato crop model parameters are uncertain
     We want to calibrate WOFOST by exploring the parameter space with black-box optimisation
-    And minimising the discrepancy for end-of-season LAI and TWSO
+    And minimising the discrepancy for full-season LAI and TWSO
     So potato crop development and growth is both accurate and well-constrained
 
     Background:
@@ -10,7 +10,6 @@ Feature: Calibration of WOFOST potato using black-box optimisation
         And we are using crop data stored in the "data" directory
         And our state variables are "LAI and TWSO"
         And we are using "mean squared error" as our error metric
-        And we are using observed data from the "data/synthetic_test_data.csv" file
         And we are using ground truth data from the "data/ground_truth.json" file
         And the following parameter specification is used for calibration:
             | name   | description                                                   | range       | distribution | type       |
@@ -30,13 +29,26 @@ Feature: Calibration of WOFOST potato using black-box optimisation
             | random_seed     | The random seed for replicability            | 100                  |
 
     @netherlands @optimisation
-    Scenario: Black-box optimisation of WOFOST potato for end-of-season LAI and TWSO in Limburg, Netherlands
+    Scenario: Black-box optimisation of WOFOST potato for full-season LAI and TWSO in Limburg, Netherlands
         Given we are using NASA weather data with a latitude of "51" and a longitude of "5"
         And we are using agronomy management data in the "data/potato_netherlands_2021.agro" file
-        When we execute an optimisation procedure using the "TPES" method and the "Optuna" library with "5" iterations
+        And we are using observed data from the "data/netherlands_synthetic_test_data.csv" file
+        When we execute an optimisation procedure using the "TPES" method and the "Optuna" library with "300" iterations
+        Then the "mean squared error" of "LAI" after calibration should be "less than" "5.0"
+        And the parameter estimate for "SPAN" should be "37.0" with "15"% error
+        And the "1st" most important parameter for "LAI" should be "SPAN"
+        And the "2nd" most important parameter for "LAI" should be "TDWI"
+        And the "3rd" most important parameter for "LAI" should be "TSUMEM"
+        And the "1st" most important parameter for "TWSO" should be "TSUM2"
 
     @india @optimisation
-    Scenario: Black-box optimisation of WOFOST potato for end-of-season LAI and TWSO in Gujarat, India
+    Scenario: Black-box optimisation of WOFOST potato for full-season LAI and TWSO in Gujarat, India
         Given we are using NASA weather data with a latitude of "23" and a longitude of "73"
         And we are using agronomy management data in the "data/potato_india_2021.agro" file
-        When we execute an optimisation procedure using the "TPES" method and the "Optuna" library with "5" iterations
+        And we are using observed data from the "data/india_synthetic_test_data.csv" file
+        When we execute an optimisation procedure using the "TPES" method and the "Optuna" library with "300" iterations
+        Then the "mean squared error" of "LAI" after calibration should be "less than" "5.0"
+        And the parameter estimate for "SPAN" should be "37.0" with "15"% error
+        And the "1st" most important parameter for "LAI" should be "TDWI"
+        And the "2nd" most important parameter for "LAI" should be "SPAN"
+        And the "1st" most important parameter for "TWSO" should be "TSUM1"

@@ -126,3 +126,62 @@ def execute_optimisation(
 		distance_metric=context.distance_metric,
 		**context.calibration_spec,
 	)
+
+
+@then(
+	'the "{position}" most important parameter for "{state_var}" '
+	'should be "{param_name}"'
+)
+def check_parameter_importance(
+	context: Context, position: str, state_var: str, param_name: str
+) -> None:
+	index = "".join(c for c in position if c.isdigit())
+	index = int(index) - 1
+
+	parameter_names = list(context.param_importances[state_var].keys())
+	optimisation_param = parameter_names[index]
+
+	if optimisation_param != param_name:
+		raise RuntimeWarning(f"Parameter is {optimisation_param}")
+
+	assert optimisation_param == param_name
+
+
+@then(
+	'the "{distance_metric}" of "{state_var}" after calibration '
+	'should be "{comparison}" "{value:f}"'
+)
+def check_calibration_performance(
+	context: Context,
+	distance_metric: str,
+	state_var: str,
+	comparison: str,
+	value: float,
+) -> None:
+	score = context.trials_df.head(1)[state_var].item()
+
+	if comparison == "less than":
+		assert score < value
+	elif comparison == "greater than":
+		assert score > value
+	elif comparison == "equal to":
+		assert score == value
+	else:
+		assert score != value
+
+
+@then(
+	'the parameter estimate for "{param_name}" should be '
+	'"{value:f}" with "{percentage:d}"% error'
+)
+def check_parameter_estimates(
+	context: Context, param_name: str, value: float, percentage: int
+) -> None:
+	parameter_estimate = context.parameter_estimates.query("name == @param_name")
+
+	def _within_percent(a: float, b: float, p: float) -> bool:
+		return abs(a - b) <= p * abs(b)
+
+	percentage /= 100  # type: ignore[assignment]
+
+	assert _within_percent(parameter_estimate["estimate"].item(), value, percentage)
