@@ -4,9 +4,12 @@ Makes use of the WOFOST 7.2 model with potential production scenarios.
 """
 
 import copy
+import datetime as dt
 
 import pandas as pd
+import requests  # type: ignore[import-untyped]
 from pcse.base import ParameterProvider
+from pcse.exceptions import PCSEError
 from pcse.input import (
 	DummySoilDataProvider,
 	NASAPowerWeatherDataProvider,
@@ -27,6 +30,44 @@ DEFAULT_PARAMETER_VALUES = dict(
 	RGRLAI=0.016,
 	Q10=2.0,
 )
+
+
+def _query_NASAPower_server(
+	self: NASAPowerWeatherDataProvider, latitude: float, longitude: float
+) -> dict:
+	"""Query the NASA Power server for data on given latitude/longitude"""
+
+	start_date = dt.date(1983, 7, 1)
+	end_date = dt.date.today()
+
+	# build URL for retrieving data, using new NASA POWER api
+	server = "https://power.larc.nasa.gov/api/temporal/daily/point"
+	payload = {
+		"request": "execute",
+		"parameters": ",".join(self.power_variables),
+		"latitude": latitude,
+		"longitude": longitude,
+		"start": start_date.strftime("%Y%m%d"),
+		"end": end_date.strftime("%Y%m%d"),
+		"community": "AG",
+		"format": "JSON",
+		"user": "pcse",
+	}
+
+	msg = "Starting retrieval from NASA Power"
+	self.logger.debug(msg)
+	req = requests.get(server, params=payload)
+
+	if req.status_code != self.HTTP_OK:
+		msg = (
+			"Failed retrieving POWER data, server returned HTTP "
+			+ "code: %i on following URL %s"
+		) % (req.status_code, req.url)
+		raise PCSEError(msg)
+
+	msg = "Successfully retrieved data from NASA Power"
+	self.logger.debug(msg)
+	return req.json()
 
 
 class WOFOST:
@@ -75,6 +116,7 @@ class WOFOST:
 		Returns:
 			NASAPowerWeatherDataProvider: The NASA weather data provider.
 		"""
+		NASAPowerWeatherDataProvider._query_NASAPower_server = _query_NASAPower_server
 		wdp = NASAPowerWeatherDataProvider(latitude=latitude, longitude=longitude)
 		return wdp
 

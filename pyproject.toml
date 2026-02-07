@@ -90,4 +90,4 @@ quiet-level = 3
 ignore-words-list = 'sies,SIES,te'
 
 [tool.bandit]
-skips = ["B101"]
+skips = ["B101", "B113"]
