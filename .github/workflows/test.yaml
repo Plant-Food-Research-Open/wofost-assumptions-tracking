@@ -49,6 +49,7 @@ jobs:
           export CICD_TESTING_ENV=true
 
           source .venv/bin/activate
+          behave --verbose --summary
           behave --format=json --outfile=report.json --verbose --summary || true
           python scripts/json_to_md.py
 
