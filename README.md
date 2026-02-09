@@ -10,7 +10,7 @@
 [![Build](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/build.yaml)
 [![CodeQL Advanced](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/codeql.yaml/badge.svg?branch=main)](https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking/actions/workflows/codeql.yaml)
 
-*Assumptions tracking for WOFOST Potato using behaviour-driven development and model cards.*
+*Assumptions tracking for WOFOST Potato using behaviour-driven development.*
 
 # Table of contents
 
