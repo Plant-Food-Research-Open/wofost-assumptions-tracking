@@ -1,0 +1,7 @@
+services:
+  wofost_at:
+    image: ghcr.io/plant-food-research-open/wofost-at:${WOFOST_VERSION:-latest}
+    command: sleep infinity
+    volumes:
+      - .:/workspace
+    tty: true
