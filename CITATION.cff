@@ -8,7 +8,7 @@ authors:
     given-names: "Jingjing"
     orcid: "https://orcid.org/0000-0001-8809-3405"
 title: "WOFOST Assumptions Tracking"
-version: 0.1.0
+version: 1.0.0
 date-released: 2025-11-13
 license: Apache-2.0
 url: "https://github.com/Plant-Food-Research-Open/wofost-assumptions-tracking"
