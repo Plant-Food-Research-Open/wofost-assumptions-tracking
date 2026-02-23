@@ -1,4 +1,4 @@
-FROM ghcr.io/plant-food-research-open/wofost-at:0.1.0
+FROM ghcr.io/plant-food-research-open/wofost-at:1.0.0
 
 ARG NB_USER=jovyan
 
