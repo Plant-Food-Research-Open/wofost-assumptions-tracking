@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wofostat"
-version = "0.1.0"
+version = "1.0.0"
 description = "Assumptions tracking for WOFOST Potato using behaviour-driven development and model cards."
 authors = [
     "James Bristow <James.Bristow@plantandfood.co.nz>",
