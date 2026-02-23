@@ -14,13 +14,15 @@ WORKDIR /workspace
 
 COPY README.md README.md
 
-COPY card card
-
 COPY wofostat wofostat
 
 COPY features features
 
-COPY tests tests
+COPY data data
+
+COPY notebooks notebooks
+
+COPY behave.ini behave.ini
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential libpq-dev graphviz \
